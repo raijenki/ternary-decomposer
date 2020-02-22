@@ -7,5 +7,8 @@ The application takes as input a 16 million RGB geotiff file and decomposes it i
 * Numpy
 * PyQt and fbs (for GUI and binary)
 
+## Usage
+Clone the repository and use `fbs run`.
+
 ## Notes
 The program may freeze during its operation due to the number of calculations. When exporting to GIS softwares such as ArcGIS, you should build pyramids with the JPEG compression.
