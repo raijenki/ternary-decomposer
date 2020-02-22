@@ -1,7 +1,7 @@
 # Ternary Decomposer
 This was built for the Geological Survey of Brazil. 
-The application takes as input a 16 million RGB geotiff file and decomposes it in 27 layers.
-
+The application takes as input a 16 million RGB geotiff file and decomposes it in 27 layers. The georeferencing of the output files is the same as the input.
+ 
 ## Dependencies
 * GDAL (and libgdal-dev)
 * Numpy
