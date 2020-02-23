@@ -11,4 +11,5 @@ The application takes as input a 16 million RGB geotiff file and decomposes it i
 Clone the repository and use `fbs run`.
 
 ## Notes
-The program may freeze during its operation due to the number of calculations. When exporting to GIS softwares such as ArcGIS, you should build pyramids with the JPEG compression.
+* The program may freeze during its operation due to the number of calculations. 
+* This application is *definitely* not optimized.

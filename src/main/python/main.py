@@ -130,7 +130,7 @@ class MainWindow(QMainWindow):
         # Gotta do this way or TIFF problem
         outputPath = os.path.join(fileDir, '111.tif' )
         # Create Gtiff driver with RGB Opts   
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         # Copy georeferencing info
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         # Write arrays
@@ -159,7 +159,7 @@ class MainWindow(QMainWindow):
                 B[i, j] = 128
 
         outputPath = os.path.join(fileDir, '112.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -184,7 +184,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 1
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '113.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -209,7 +209,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 1
         outputPath = os.path.join(fileDir, '121.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -234,7 +234,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 128
         outputPath = os.path.join(fileDir, '122.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -259,7 +259,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '123.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -284,7 +284,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 1
         outputPath = os.path.join(fileDir, '131.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -308,7 +308,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 128
         outputPath = os.path.join(fileDir, '132.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -333,7 +333,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '133.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -358,7 +358,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 1
                 B[i, j] = 1
         outputPath = os.path.join(fileDir, '211.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -383,7 +383,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 1
                 B[i, j] = 128
         outputPath = os.path.join(fileDir, '212.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -408,7 +408,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 1
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '213.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -433,7 +433,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 1
         outputPath = os.path.join(fileDir, '221.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -457,7 +457,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 128
         outputPath = os.path.join(fileDir, '222.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -482,7 +482,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '223.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -507,7 +507,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 1
         outputPath = os.path.join(fileDir, '231.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -532,7 +532,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 128
         outputPath = os.path.join(fileDir, '232.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -557,7 +557,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '233.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -581,7 +581,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 1
                 B[i, j] = 1
         outputPath = os.path.join(fileDir, '311.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -606,7 +606,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 1
                 B[i, j] = 128
         outputPath = os.path.join(fileDir, '312.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -631,7 +631,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 1
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '313.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -655,7 +655,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 1
         outputPath = os.path.join(fileDir, '321.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -679,7 +679,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 128
         outputPath = os.path.join(fileDir, '322.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -703,7 +703,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 128
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '323.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -727,7 +727,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 1
         outputPath = os.path.join(fileDir, '331.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -751,7 +751,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 128
         outputPath = os.path.join(fileDir, '332.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
@@ -775,7 +775,7 @@ class MainWindow(QMainWindow):
                 G[i, j] = 255
                 B[i, j] = 255
         outputPath = os.path.join(fileDir, '333.tif' )  
-        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_UInt16, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
+        dst_ds = gdal.GetDriverByName('GTiff').Create(outputPath, K.shape[1], K.shape[0], 3, gdal.GDT_Byte, options = ['PHOTOMETRIC=RGB', 'PROFILE=GeoTIFF',])
         gdalnumeric.CopyDatasetInfo(source, dst_ds)
         dst_ds.GetRasterBand(1).WriteArray(R)
         dst_ds.GetRasterBand(1).SetNoDataValue(0)
