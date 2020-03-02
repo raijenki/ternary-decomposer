@@ -118,8 +118,8 @@ class MainWindow(QMainWindow):
 
         # 111
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_low[i, j] == 1 and U_low[i, j] == 1 ):
@@ -149,8 +149,8 @@ class MainWindow(QMainWindow):
 
         # Repeat - 112
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_low[i, j] == 1 and U_mid[i, j] == 128 ):
@@ -175,8 +175,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(43)
         # 113
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_low[i, j] == 1 and U_high[i, j] == 255 ):
@@ -200,8 +200,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(46)
         # 121
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_mid[i, j] == 128 and U_low[i, j] == 1 ):
@@ -225,8 +225,8 @@ class MainWindow(QMainWindow):
         self.processStatus.setText('Exporting 5/27...')
         self.progressBar.setValue(49)
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_mid[i, j] == 128 and U_mid[i, j] == 128 ):
@@ -250,8 +250,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(52)
         # 123
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_mid[i, j] == 128 and U_high[i, j] == 255 ):
@@ -275,8 +275,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(55)
         # 131
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_high[i, j] == 255 and U_low[i, j] == 1 ):
@@ -299,8 +299,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(58)
         # 132
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_high[i, j] == 255 and U_mid[i, j] == 128 ):
@@ -324,8 +324,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(61)
         # 133
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_low[i, j] == 1 and Th_high[i, j] == 255 and U_high[i, j] == 255 ):
@@ -349,8 +349,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(64)
         # 211
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_low[i, j] == 1 and U_low[i, j] == 1 ):
@@ -374,8 +374,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(67)
         # 212
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_low[i, j] == 1 and U_mid[i, j] == 128 ):
@@ -399,8 +399,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(70)
         # 213
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_low[i, j] == 1 and U_high[i, j] == 255 ):
@@ -424,8 +424,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(73)
         # 221
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_mid[i, j] == 128 and U_low[i, j] == 1 ):
@@ -448,8 +448,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(76)
         # 222
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_mid[i, j] == 128 and U_mid[i, j] == 128 ):
@@ -473,8 +473,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(78)
         # 223
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_mid[i, j] == 128 and U_high[i, j] == 255 ):
@@ -498,8 +498,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(80)
         # 231
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_high[i, j] == 255 and U_low[i, j] == 1 ):
@@ -523,8 +523,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(82)
         # 232
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_high[i, j] == 255 and U_mid[i, j] == 128 ):
@@ -548,8 +548,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(84)
         # 233
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_mid[i, j] == 128 and Th_high[i, j] == 255 and U_high[i, j] == 255 ):
@@ -572,8 +572,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(86)
         # 311
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_low[i, j] == 1 and U_low[i, j] == 1 ):
@@ -597,8 +597,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(88)
         # 312
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_low[i, j] == 1 and U_mid[i, j] == 128 ):
@@ -622,8 +622,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(88)
         # 313
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_low[i, j] == 1 and U_high[i, j] == 255 ):
@@ -646,8 +646,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(90)
         # 321
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_mid[i, j] == 128 and U_low[i, j] == 1 ):
@@ -670,8 +670,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(92)
         # 322
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_mid[i, j] == 128 and U_mid[i, j] == 128 ):
@@ -694,8 +694,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(94)
         # 323
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_mid[i, j] == 128 and U_high[i, j] == 255 ):
@@ -718,8 +718,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(96)
         # 331
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_high[i, j] == 255 and U_low[i, j] == 1 ):
@@ -742,8 +742,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(98)
         # 332
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_high[i, j] == 255 and U_mid[i, j] == 128 ):
@@ -766,8 +766,8 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(99)
         # 333
         R = np.zeros(K.shape, dtype=np.uint8)
-        G = np.zeros(K.shape, dtype=np.uint8)
-        B = np.zeros(K.shape, dtype=np.uint8)
+        G = np.zeros(Th.shape, dtype=np.uint8)
+        B = np.zeros(U.shape, dtype=np.uint8)
 
         for i, j in np.ndindex(K.shape):
             if(K_high[i, j] == 255 and Th_high[i, j] == 255 and U_high[i, j] == 255 ):
