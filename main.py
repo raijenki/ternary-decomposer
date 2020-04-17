@@ -1,7 +1,7 @@
 import sys
 import os
-import gdal, osr, ogr
-import gdalnumeric
+import ogr, osr
+import gdal, gdalnumeric
 import numpy as np
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QWidget, QLabel, QFileDialog, QProgressBar
