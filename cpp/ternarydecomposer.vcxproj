@@ -45,11 +45,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
+      <AdditionalDependencies>C:\Qt\5.15.1\msvc2019_64\lib\Qt5Gui.lib;C:\Qt\5.15.1\msvc2019_64\lib\Qt5Core.lib;C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgets.lib;C:\Users\danie\Downloads\gdal\lib\gdal_i.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Qt\5.15.1\msvc2019_64\lib;C:\Users\danie\Downloads\gdal\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Qt\5.15.1\msvc2019_64\include;C:\Users\danie\Downloads\gdal\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
       <AdditionalDependencies>$(Qt_LIBS_);C:\Users\danie\Downloads\gdal\lib\gdal_i.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\danie\Downloads\gdal\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(Qt_LIBPATH_);C:\Users\danie\Downloads\gdal\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Driver>Driver</Driver>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);C:\Users\danie\Downloads\gdal\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

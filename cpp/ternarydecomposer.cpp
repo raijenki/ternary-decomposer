@@ -1,7 +1,6 @@
 #include "ternarydecomposer.h"
 #include "qstring.h"
 #include "qfile.h"
-#include "gdal_alg.h"
 #include "gdal_priv.h"
 #include <qmessagebox.h>
 #include <iostream>
@@ -10,8 +9,8 @@
 #include <vector>
 
 using namespace std;
-int vconversor(char rgb, float value);
-bool colorchk(string comp, float k, float th, float u);
+int vconversor(char rgb, uint16_t value);
+bool colorchk(string comp, uint16_t k, uint16_t th, uint16_t u);
 
 ternarydecomposer::ternarydecomposer(QWidget *parent) : QMainWindow(parent) {
 
@@ -89,13 +88,16 @@ void ternarydecomposer::flBtn_onClick() {
 			int nRows = orig_ternary->GetRasterYSize();
 			int nCols = orig_ternary->GetRasterXSize();
 			const char* proj = orig_ternary->GetProjectionRef();
-			string wkt = proj = orig_ternary->GetProjectionRef();
+			//string wkt = proj = orig_ternary->GetProjectionRef();
 			double noData = orig_ternary->GetRasterBand(1)->GetNoDataValue();
 			double transform[6];
 			orig_ternary->GetGeoTransform(transform);
 
 			tiffDriver = GetGDALDriverManager()->GetDriverByName("GTiff");
-			fused_bands = tiffDriver->Create(filename.c_str(), nCols, nRows, 3, GDT_Int32, NULL);
+			char** papszOptions = NULL;
+			papszOptions = CSLSetNameValue(papszOptions, "PHOTOMETRIC", "RGB");
+			papszOptions = CSLSetNameValue(papszOptions, "PROFILE", "GEOTIFF");
+			fused_bands = tiffDriver->Create(filename.c_str(), nCols, nRows, 3, GDT_Byte, papszOptions);
 			fused_bands->SetGeoTransform(transform);
 			fused_bands->SetProjection(proj);
 			fused_bands->GetRasterBand(1)->SetNoDataValue(0);
@@ -103,18 +105,18 @@ void ternarydecomposer::flBtn_onClick() {
 			fused_bands->GetRasterBand(3)->SetNoDataValue(0);
 
 			// Allocate memory for row buffers
-			float* k_Row = (float*)CPLMalloc(sizeof(float) * nCols);
-			float* th_Row = (float*)CPLMalloc(sizeof(float) * nCols);
-			float* u_Row = (float*)CPLMalloc(sizeof(float) * nCols);
-			float* k_Row_new = (float*)CPLMalloc(sizeof(float) * nCols);
-			float* th_Row_new = (float*)CPLMalloc(sizeof(float) * nCols);
-			float* u_Row_new = (float*)CPLMalloc(sizeof(float) * nCols);
+			uint16_t* k_Row = (uint16_t*)CPLMalloc(sizeof(uint16_t) * nCols);
+			uint16_t* th_Row = (uint16_t*)CPLMalloc(sizeof(uint16_t) * nCols);
+			uint16_t* u_Row = (uint16_t*)CPLMalloc(sizeof(uint16_t) * nCols);
+			uint16_t* k_Row_new = (uint16_t*)CPLMalloc(sizeof(uint16_t) * nCols);
+			uint16_t* th_Row_new = (uint16_t*)CPLMalloc(sizeof(uint16_t) * nCols);
+			uint16_t* u_Row_new = (uint16_t*)CPLMalloc(sizeof(uint16_t) * nCols);
 
 			// Decomposition
 			for (auto i = 0; i < nRows; i++) {
-				orig_ternary->GetRasterBand(1)->RasterIO(GF_Read, 0, i, nCols, 1, k_Row, nCols, 1, GDT_Int32, 0, 0);
-				orig_ternary->GetRasterBand(2)->RasterIO(GF_Read, 0, i, nCols, 1, th_Row, nCols, 1, GDT_Int32, 0, 0);
-				orig_ternary->GetRasterBand(3)->RasterIO(GF_Read, 0, i, nCols, 1, u_Row, nCols, 1, GDT_Int32, 0, 0);
+				orig_ternary->GetRasterBand(1)->RasterIO(GF_Read, 0, i, nCols, 1, k_Row, nCols, 1, GDT_UInt16, 0, 0);
+				orig_ternary->GetRasterBand(2)->RasterIO(GF_Read, 0, i, nCols, 1, th_Row, nCols, 1, GDT_UInt16, 0, 0);
+				orig_ternary->GetRasterBand(3)->RasterIO(GF_Read, 0, i, nCols, 1, u_Row, nCols, 1, GDT_UInt16, 0, 0);
 				for (auto j = 0; j < nCols; j++) {
 					k_Row_new[j] = 0;
 					u_Row_new[j] = 0;
@@ -127,9 +129,9 @@ void ternarydecomposer::flBtn_onClick() {
 						th_Row_new[j] = vconversor(th_pos, th_Row[j]);
 					}
 				}
-				fused_bands->GetRasterBand(1)->RasterIO(GF_Write, 0, i, nCols, 1, k_Row_new, nCols, 1, GDT_Byte, 0, 0);
-				fused_bands->GetRasterBand(2)->RasterIO(GF_Write, 0, i, nCols, 1, th_Row_new, nCols, 1, GDT_Byte, 0, 0);
-				fused_bands->GetRasterBand(3)->RasterIO(GF_Write, 0, i, nCols, 1, u_Row_new, nCols, 1, GDT_Byte, 0, 0);
+				fused_bands->GetRasterBand(1)->RasterIO(GF_Write, 0, i, nCols, 1, k_Row_new, nCols, 1, GDT_UInt16, 0, 0);
+				fused_bands->GetRasterBand(2)->RasterIO(GF_Write, 0, i, nCols, 1, th_Row_new, nCols, 1, GDT_UInt16, 0, 0);
+				fused_bands->GetRasterBand(3)->RasterIO(GF_Write, 0, i, nCols, 1, u_Row_new, nCols, 1, GDT_UInt16, 0, 0);
 			}
 
 			/* Will fix someday
@@ -162,7 +164,7 @@ void ternarydecomposer::flBtn_onClick() {
 }
 
 
-bool colorchk(string comp, float k, float th, float u) {
+bool colorchk(string comp, uint16_t k, uint16_t th, uint16_t u) {
 	
 	int compvar = stoi(comp);
 	if (compvar == 111 && k == 1 && th == 1 && u == 1) return true;
@@ -196,7 +198,7 @@ bool colorchk(string comp, float k, float th, float u) {
 }
 
 
-int vconversor(char rgb, float value) {
+int vconversor(char rgb, uint16_t value) {
 	if (rgb == '1') {
 		if (value <= 85) { return 1; }
 		else { return 0; }
