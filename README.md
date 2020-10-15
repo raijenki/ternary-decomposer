@@ -2,7 +2,7 @@
 This was built for the Geological Survey of Brazil. 
 The application takes as input a 16 million RGB geotiff file and decomposes it in 27 layers (check image files for references). The georeferencing of the output files is the same as the input. It also produces shapefiles (shp) of the tiff files.
  
-##Dependencies (C++)
+## Dependencies (C++)
 * Qt 5
 * GDAL 3
 
