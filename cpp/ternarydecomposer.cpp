@@ -73,6 +73,9 @@ void ternarydecomposer::flBtn_onClick() {
 		// Gdal stuff
 		GDALAllRegister();
 		GDALDataset* orig_ternary = (GDALDataset*)GDALOpen(fileLocation, GA_ReadOnly);
+		const char* pszFormat = "GTiff";
+		OGRSpatialReference oSRS;
+		//oSRS = orig_ternary->GetSpatialRef();
 
 		for (string composition : compositions) {
 			this->pBar->setValue(progress);
@@ -87,19 +90,24 @@ void ternarydecomposer::flBtn_onClick() {
 			// Get relevant data from original dataset
 			int nRows = orig_ternary->GetRasterYSize();
 			int nCols = orig_ternary->GetRasterXSize();
-			const char* proj = orig_ternary->GetProjectionRef();
+			
 			//string wkt = proj = orig_ternary->GetProjectionRef();
 			double noData = orig_ternary->GetRasterBand(1)->GetNoDataValue();
-			double transform[6];
-			orig_ternary->GetGeoTransform(transform);
+			
+			//printf("Projection is `%s'\n", orig_ternary->GetProjectionRef());
+			tiffDriver = GetGDALDriverManager()->GetDriverByName(pszFormat);
 
-			tiffDriver = GetGDALDriverManager()->GetDriverByName("GTiff");
 			char** papszOptions = NULL;
+			papszOptions = CSLSetNameValue(papszOptions, "TILED", "NO");
+			papszOptions = CSLSetNameValue(papszOptions, "COMPRESS", "PACKBITS");
 			papszOptions = CSLSetNameValue(papszOptions, "PHOTOMETRIC", "RGB");
 			papszOptions = CSLSetNameValue(papszOptions, "PROFILE", "GEOTIFF");
+			//fused_bands = tiffDriver->CreateCopy(filename.c_str(), orig_ternary, FALSE, NULL, NULL, NULL);
+
+			//fused_bands = tiffDriver->CreateCopy(filename.c_str(), orig_ternary, FALSE, papszOptions, GDALTermProgress, NULL);
 			fused_bands = tiffDriver->Create(filename.c_str(), nCols, nRows, 3, GDT_Byte, papszOptions);
-			fused_bands->SetGeoTransform(transform);
-			fused_bands->SetProjection(proj);
+			GDALClose(fused_bands);
+			fused_bands = (GDALDataset*)GDALOpen(filename.c_str(), GA_Update);
 			fused_bands->GetRasterBand(1)->SetNoDataValue(0);
 			fused_bands->GetRasterBand(2)->SetNoDataValue(0);
 			fused_bands->GetRasterBand(3)->SetNoDataValue(0);
@@ -129,9 +137,13 @@ void ternarydecomposer::flBtn_onClick() {
 						th_Row_new[j] = vconversor(th_pos, th_Row[j]);
 					}
 				}
+				GDALSetRasterColorInterpretation(fused_bands->GetRasterBand(1), GCI_RedBand);
+				GDALSetRasterColorInterpretation(fused_bands->GetRasterBand(2), GCI_GreenBand);
+				GDALSetRasterColorInterpretation(fused_bands->GetRasterBand(3), GCI_BlueBand);
 				fused_bands->GetRasterBand(1)->RasterIO(GF_Write, 0, i, nCols, 1, k_Row_new, nCols, 1, GDT_UInt16, 0, 0);
 				fused_bands->GetRasterBand(2)->RasterIO(GF_Write, 0, i, nCols, 1, th_Row_new, nCols, 1, GDT_UInt16, 0, 0);
 				fused_bands->GetRasterBand(3)->RasterIO(GF_Write, 0, i, nCols, 1, u_Row_new, nCols, 1, GDT_UInt16, 0, 0);
+				//fused_bands->SetProjection(orig_ternary->GetProjectionRef());
 			}
 
 			/* Will fix someday
@@ -147,6 +159,25 @@ void ternarydecomposer::flBtn_onClick() {
 			poLayer = shpDS->CreateLayer(composition.c_str(), shpproj, wkbMultiPolygon, NULL);
 			GDALFPolygonize(fused_bands->GetRasterBand(2), NULL, poLayer, -1, NULL, NULL, NULL);
 			*/
+
+			const char* pszProjection;
+			pszProjection = orig_ternary->GetProjectionRef();
+			double transform[6];
+			const char* proj = orig_ternary->GetProjectionRef();
+			orig_ternary->GetGeoTransform(transform);
+			fused_bands->SetMetadata(orig_ternary->GetMetadata());
+			if (!(transform[0] == 0 && transform[1] == 1 && transform[2] == 0 && transform[3] == 0 && transform[4] == 0 && transform[5] == 1)) {
+				fused_bands->SetProjection(proj);
+				fused_bands->SetGeoTransform(transform);
+			}
+			else if (orig_ternary->GetGCPCount() > 1) {
+				fused_bands->SetGCPs(orig_ternary->GetGCPCount(), orig_ternary->GetGCPs(), orig_ternary->GetGCPProjection());
+				
+			}
+			//fused_bands->SetSpatialRef(orig_ternary->GetSpatialRef());
+			
+			//fused_bands->SetGCPs(orig_ternary->GetGCPCount(), orig_ternary->GetGCPs(), orig_ternary->GetGCPSpatialRef());
+			//fused_bands->FlushCache();
 			GDALClose(fused_bands);
 			progress = progress + 3.7;
 			//GDALDestroyDriverManager(); // later

@@ -49,11 +49,11 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
-      <AdditionalDependencies>C:\Qt\5.15.1\msvc2019_64\lib\Qt5Gui.lib;C:\Qt\5.15.1\msvc2019_64\lib\Qt5Core.lib;C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgets.lib;C:\Users\danie\Downloads\gdal\lib\gdal_i.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Qt\5.15.1\msvc2019_64\lib;C:\Users\danie\Downloads\gdal\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\Qt\5.15.1\msvc2019_64\lib\Qt5Gui.lib;C:\Qt\5.15.1\msvc2019_64\lib\Qt5Core.lib;C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgets.lib;C:\vcpkg\packages\gdal_x64-windows\lib\gdal_i.lib;C:\vcpkg\packages\proj4_x64-windows\lib\proj.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Qt\5.15.1\msvc2019_64\lib;C:\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Qt\5.15.1\msvc2019_64\include;C:\Users\danie\Downloads\gdal\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\5.15.1\msvc2019_64\include;C:\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
