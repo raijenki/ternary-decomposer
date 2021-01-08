@@ -13,7 +13,7 @@ The application takes as input a 16 million RGB geotiff file and decomposes it i
 
 ## Usage
 Clone the repository and use `python main.py`.
-The compiled version C++ is located at the Releases.
+The compiled version C++ is located at the Releases. When using the C++ version, you should open through the .bat file or files won't be georeferenced.
 
 ## Notes
 * When importing to ArcGIS, it's necessary to disable some statistical calculation automatically does or the images will be badly displayed. This is solvable by simply disabling the ‘gamma stretch’ and the equalization to ‘none’ (properties tab of the raster). . 
